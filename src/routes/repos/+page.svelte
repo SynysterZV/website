@@ -11,7 +11,7 @@
         languages: y.languages.edges.map(xy => ({
             name: xy.node.name,
             color: xy.node.color,
-            size: (xy.size / y.languages.totalSize * 100).toFixed(1)
+            size: (xy.size / y.languages.totalSize * 100)
         }))
     }))
 </script>
@@ -49,7 +49,7 @@
                         ></div>
                     {/each}
                 </div>
-                <div class="grid grid-cols-3">
+                <div class="grid grid-cols-2 sm:grid-cols-3">
                     {#each repo.languages as language}
                         <div class="flex items-center space-x-1 mt-3">
                             <div
@@ -57,7 +57,7 @@
                                 class="rounded-full w-1 h-1"
                             ></div>
                             <h2>{language.name}</h2>
-                            <span class="text-base-content/50">{language.size}%</span>
+                            <span class="text-base-content/50">{language.size.toFixed(1)}%</span>
                         </div>
                     {/each}
                 </div>

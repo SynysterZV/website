@@ -49,13 +49,13 @@
     <div class="drawer-content flex flex-col md:p-4">
         <div class="navbar w-full mx-auto">
 
-            <label for="navdrawer" aria-label="open sidebar" class="ml-3 md:hidden">
+            <label for="navdrawer" aria-label="open sidebar" class="ml-3 lg:hidden">
                 <Hamburger class="size-8 swap-off" />
             </label>
 
-            <div class="navbar-start md:hidden"></div>
+            <div class="navbar-start lg:hidden"></div>
 
-            <div class="navbar-center relative right-10 md:navbar-start md:right-0">
+            <div class="navbar-center relative right-10 lg:navbar-start lg:right-0 ml-4">
                 <a class="flex flex-col sm:flex-row items-center gap-1" href="/">
                     <span
                         class="w-10 h-10 bg-linear-to-r from-primary to-secondary [clip-path:url(#Fire)]"
@@ -64,7 +64,7 @@
                     </span>
                     <h1 class="text-xl font-bold">SynDev</h1>
                 </a>
-                <div class="hidden ml-4 md:flex">
+                <div class="hidden ml-4 lg:flex">
                     {@render routes()}
                 </div>
             </div>
