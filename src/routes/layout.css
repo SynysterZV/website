@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap');
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dracula --prefersdark;
+}
+
+@custom-variant dark (&:where([data-theme=dracula], [data-theme=dracula] *));
+
+@theme {
+  --font-bric: 'Bricolage Grotesque', sans-serif;
+
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+  --animate-shift: shift 2s linear infinite;
+
+  @keyframes shift {
+    to {
+      transform: translate(-40px, -40px);
+    }
+  }
+
+  @keyframes wiggle {
+    0%, 100% {
+      transform: rotate(-5deg);
+    }
+    50% {
+      transform: rotate(5deg);
+    }
+  }
+}
