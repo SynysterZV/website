@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap');
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "@iconify/tailwind4";
 @plugin "daisyui" {
   themes: light --default, dracula --prefersdark;
+  exclude: properties;
 }
 
 @custom-variant dark (&:where([data-theme=dracula], [data-theme=dracula] *));
@@ -28,7 +31,26 @@
   }
 }
 
+@layer base {
+  code {
+    counter-reset: step;
+    counter-increment: step 0;
+  }
+
+  code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    @apply 
+      w-4
+      mr-6
+      inline-block
+      text-right
+      text-gray-500/50;
+  }
+}
+
 @layer components {
+
   .icon-bar {
     @apply menu menu-horizontal text-3xl;
 
@@ -53,5 +75,45 @@
       text-transparent
       bg-clip-text
       text-shadow-[0_7px_20px_var(--color-primary)]
+  }
+
+  html[data-theme=dracula] .shiki,
+  html[data-theme=dracula] .shiki > code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+
+  .shiki > div {
+    @apply 
+    absolute
+    top-0
+    right-0;
+
+    @variant lg {
+      @apply top-4 right-4;
+    }
+
+    > span {
+      @apply text-secondary;
+    }
+
+    > button {
+      @apply btn btn-square btn-ghost text-2xl ml-2;
+
+      > label {
+        @apply swap swap-rotate;
+
+        .swap-off {
+          @apply icon-[solar--copy-linear];
+        }
+
+        .swap-on {
+          @apply icon-[material-symbols--check];
+        }
+      }
+    }
   }
 }

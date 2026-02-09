@@ -4,7 +4,7 @@
 
     // SvelteKit
     import { page } from "$app/state";
-    import { onNavigate } from "$app/navigation";
+    import { onNavigate, afterNavigate } from "$app/navigation";
 
     // Components
     import ThemeToggle from "./ThemeToggle.svelte";
@@ -13,6 +13,7 @@
     import Github from "~icons/line-md/github"
 	import Fire from "$lib/assets/Fire.svelte"
 	import Hamburger from "~icons/heroicons/bars-3"
+    import Close from "~icons/heroicons/x-mark-16-solid"
 
     let menuVisible = $state(false)
     let origin = $state("")
@@ -20,11 +21,23 @@
     let routeList = [
 		["Home", "/"],
 		["About", "/about"],
-		["Cat", "/cat"],
-        ["Repos", "/repos"]
+        ["Repos", "/repos"],
+        ["Blog", "/blog"]
 	]
 
-    onNavigate(() => { menuVisible = false })
+    onNavigate((nav) => { 
+        menuVisible = false
+
+        if(!document.startViewTransition) return
+
+        return new Promise((resolve) => {
+            document.startViewTransition(async () => {
+                resolve();
+                await nav.complete
+            })
+        })
+    })
+
     onMount(() => {
         if(typeof window !== "undefined") {
             origin = window.location.origin
@@ -49,8 +62,10 @@
     <div class="drawer-content flex flex-col md:p-4">
         <div class="navbar w-full mx-auto">
 
-            <label for="navdrawer" aria-label="open sidebar" class="ml-3 lg:hidden">
+            <label for="navdrawer" aria-label="open sidebar" class="ml-3 swap swap-rotate lg:hidden">
+                <input type="checkbox">
                 <Hamburger class="size-8 swap-off" />
+                <Close class="size-8 swap-on" />
             </label>
 
             <div class="navbar-start lg:hidden"></div>

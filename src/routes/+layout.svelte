@@ -7,6 +7,7 @@
 	import favicon from '$lib/assets/favicon.svg';	
 	import GridPattern from '$lib/components/GridPattern.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
+	import Notifications from '$lib/components/Notifications.svelte';
 
 	// SvelteKit
 	import { page } from '$app/state';
@@ -47,7 +48,7 @@
 
 		<Navbar />
 
-		<div class="container p-1 flex flex-col space-y-4 mx-auto max-w-sm sm:max-w-4xl mt-5 grow">
+		<div class="container p-1 flex flex-col space-y-4 mx-auto max-w-sm sm:max-w-2xl lg:max-w-6xl mt-5 grow">
 			{@render children()}
 		</div>
 
@@ -59,3 +60,5 @@
 
 	</div>
 </SvelteTheme>
+
+<Notifications/>

@@ -6,7 +6,7 @@
 	import Moon from "~icons/line-md/moon-loop"
 
     const handleKBD = (e: KeyboardEvent) => {
-        if(e.key.toLocaleLowerCase() == "t") toggleTheme()
+        if(e.ctrlKey && e.key.toLocaleLowerCase() == "t") toggleTheme()
     }
 
     const toggleTheme = () => {

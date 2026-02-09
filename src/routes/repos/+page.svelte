@@ -16,12 +16,17 @@
     }))
 </script>
 
+<svelte:head>
+    <title>Repos</title>
+</svelte:head>
+
 <div class="grid md:grid-cols-2 auto-rows-fr gap-4">
     {#each x as repo}
         <a 
             href={repo.url} 
             target="_blank"
-            class="w-full card-body bg-base-300/50 rounded-xl"
+            rel="external"
+            class="w-full card-body bg-base-200 border border-base-300 hover:bg-base-300 rounded-xl"
         >
             <div class="flex justify-between">
                 <h2 class="font-semibold flex">

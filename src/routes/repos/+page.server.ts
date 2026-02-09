@@ -47,7 +47,7 @@ let cache: {
 
 export const load: PageServerLoad = async ({ fetch, setHeaders }) => {
     const query = `
-        query {
+        {
             user(login:"synysterzv") {
                 pinnedItems(first: 6, types: [REPOSITORY]) {
                     nodes {

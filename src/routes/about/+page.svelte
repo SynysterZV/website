@@ -50,20 +50,23 @@
 
 </script>
 
+<svelte:head>
+    <title>About</title>
+</svelte:head>
+
 {#if $userData[userId]}
     <div class="card bg-base-200 w-96 shadow-sm items-center self-center">
         <div class="avatar mt-4">
-            <div class="{
-                    $userData[userId].discord_status == "online"
-                    ? "ring-green-500"
-                    : $userData[userId].discord_status == "idle"
-                    ? "ring-yellow-500"
-                    : "ring-gray-500"
-                } ring-offset-base-200 w-24 rounded-full ring-2 ring-offset-2">
+            <div class="w-24 relative">
+                <img
+                    src="https://cdn.discordapp.com/avatar-decoration-presets/{$userData[userId].discord_user.avatar_decoration_data.asset}.png"
+                    alt="Discord Avatar Dec"
+                    class="absolute top-0 right-0 z-2"
+                >
                 <img 
                 src="https://cdn.discordapp.com/avatars/{userId}/{$userData[userId].discord_user.avatar}.png"
                 alt="Discord Avatar"
-                class="rounded-full"
+                class="rounded-full absolute top-0 right-0 z-1"
                 />
             </div>
         </div>
